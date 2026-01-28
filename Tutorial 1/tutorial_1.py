@@ -28,3 +28,12 @@ model.fit(train_images,train_labels,epochs=25)
 # testing the model on the test data
 test_loss, test_accuracy = model.evaluate(test_images,test_labels)
 print("Tested Accuracy:", test_accuracy)
+
+# using the model to predict
+prediction = model.predict(test_images) # the predict function expects an array of values
+for i in range(5):
+    plt.grid(False)
+    plt.imshow(test_images[i])
+    plt.xlabel("Actual: " + class_names[test_labels[i]])
+    plt.title("Prediction: " + class_names[np.argmax(prediction[i])])
+    plt.show()
